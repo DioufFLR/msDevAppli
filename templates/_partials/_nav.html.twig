@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand col-4 text-danger" href="#">The District® </a>
+        <button class="navbar-toggler text-danger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon navbar-dark"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav justify-content-between me-auto mb-2 mb-lg-0">
+                <li class="nav-item d me-3">
+                    <a class="nav-link active  text-danger" aria-current="page" href="/">Accueil</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link text-danger" href="/categories">Catégories</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link text-danger" href="/plats">Plats</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link text-danger" href="/contact">Contact</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                {% if app.user %}
+                    <li class="nav-items">
+                        <a class="nav-link text-danger" href="#">Mon panier</a>
+                    </li>
+                    <li class="nav-items">
+                        <a class="nav-link text-danger" href="#">Mon compte</a>
+                    </li>
+                    <li class="nav-items">
+                        <a class="nav-link text-danger" href="#">Me déconnecter</a>
+                    </li>
+                {% else %}
+                    <li class="nav-items">
+                        <a class="nav-link text-danger" href="#">M'inscrire</a>
+                    </li>
+                    <li class="nav-items">
+                        <a class="nav-link text-danger" href="#">Me connecter</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
