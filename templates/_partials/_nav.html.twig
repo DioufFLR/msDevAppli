@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand col-4 text-danger" href="#">The District® </a>
+        <a class="navbar-brand col-4 text-danger" href="#">The District®</a>
         <button class="navbar-toggler text-danger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon navbar-dark"></span>
         </button>
@@ -28,14 +28,14 @@
                         <a class="nav-link text-danger" href="#">Mon compte</a>
                     </li>
                     <li class="nav-items">
-                        <a class="nav-link text-danger" href="#">Me déconnecter</a>
+                        <a class="nav-link text-danger" href="{{ path('app_logout') }}">Me déconnecter</a>
                     </li>
                 {% else %}
                     <li class="nav-items">
-                        <a class="nav-link text-danger" href="#">M'inscrire</a>
+                        <a class="nav-link text-danger" href="{{ path('app_register') }}">M'inscrire</a>
                     </li>
                     <li class="nav-items">
-                        <a class="nav-link text-danger" href="#">Me connecter</a>
+                        <a class="nav-link text-danger" href="{{ path('app_login') }}">Me connecter</a>
                     </li>
                 {% endif %}
             </ul>
