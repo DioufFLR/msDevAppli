@@ -6,8 +6,10 @@ use App\Entity\Categorie;
 use App\Entity\Commande;
 use App\Entity\Plat;
 use App\Entity\Utilisateur;
+use ContainerXkERt5Y\getSecurity_UserPasswordHasherService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
@@ -82,17 +84,40 @@ class AppFixtures extends Fixture
 
         // Users
 
+        $admin = new Utilisateur();
+        $admin->setEmail('admin@admin.fr')
+            ->setNom('Fleur')
+            ->setPrenom('Geoffrey')
+            ->setTelephone('0645785421')
+            ->setPassword(password_hash('bonjour', PASSWORD_DEFAULT))
+            ->setRoles(['ROLE_ADMIN', 'ROLE_USER']);
+        $manager->persist($admin);
+
         $user1 = new Utilisateur();
-        $user1->setEmail('romain@gmail.com');
-        $user1->setPassword(password_hash());
-        $user1->setNom('Durand');
-        $user1->setPrenom('Romain');
-        $user1->setTelephone('0678521545');
+        $user1->setEmail('romain@gmail.com')
+            ->setNom('Durand')
+            ->setPrenom('Romain')
+            ->setTelephone('0678521545')
+            ->setPassword(password_hash('bonjour', PASSWORD_DEFAULT))
+            ->setRoles(['ROLE_USER']);
+        $manager->persist($user1);
 
         // Commandes
 
+        $com1 = new Commande();
+        $com1->setDateCommande(new \DateTimeImmutable('16-04-2023 14:06:12'))
+            ->setTotal('24')
+            ->setEtat('2');
 
+        $com2 = new Commande();
+        $com2->setDateCommande(new \DateTimeImmutable('16-04-2023 14:06:12'))
+            ->setTotal('15')
+            ->setEtat('1');
 
+        $com3 = new Commande();
+        $com3->setDateCommande(new \DateTimeImmutable('16-04-2023 14:06:12'))
+            ->setTotal('19')
+            ->setEtat('0');
 
         $manager->flush();
     }
