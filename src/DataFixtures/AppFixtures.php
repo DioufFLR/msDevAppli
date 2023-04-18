@@ -3,7 +3,9 @@
 namespace App\DataFixtures;
 
 use App\Entity\Categorie;
+use App\Entity\Commande;
 use App\Entity\Plat;
+use App\Entity\Utilisateur;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -78,9 +80,19 @@ class AppFixtures extends Fixture
         $plat5->setCategorie($cat2);
         $manager->persist($plat5);
 
+        // Users
+
+        $user1 = new Utilisateur();
+        $user1->setEmail('romain@gmail.com');
+        $user1->setPassword(password_hash());
+        $user1->setNom('Durand');
+        $user1->setPrenom('Romain');
+        $user1->setTelephone('0678521545');
+
         // Commandes
 
-        // Users
+
+
 
         $manager->flush();
     }
