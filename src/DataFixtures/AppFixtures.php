@@ -9,7 +9,6 @@ use App\Entity\Utilisateur;
 use ContainerXkERt5Y\getSecurity_UserPasswordHasherService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
@@ -82,6 +81,26 @@ class AppFixtures extends Fixture
         $plat5->setCategorie($cat2);
         $manager->persist($plat5);
 
+        // Commandes
+
+        $com1 = new Commande();
+        $com1->setDateCommande(new \DateTimeImmutable('16-04-2023 14:06:12'))
+            ->setTotal('24')
+            ->setEtat('2');
+        $manager->persist($com1);
+
+        $com2 = new Commande();
+        $com2->setDateCommande(new \DateTimeImmutable('16-04-2023 14:06:12'))
+            ->setTotal('15')
+            ->setEtat('1');
+        $manager->persist($com2);
+
+        $com3 = new Commande();
+        $com3->setDateCommande(new \DateTimeImmutable('16-04-2023 14:06:12'))
+            ->setTotal('19')
+            ->setEtat('0');
+        $manager->persist($com3);
+
         // Users
 
         $admin = new Utilisateur();
@@ -99,25 +118,20 @@ class AppFixtures extends Fixture
             ->setPrenom('Romain')
             ->setTelephone('0678521545')
             ->setPassword(password_hash('bonjour', PASSWORD_DEFAULT))
-            ->setRoles(['ROLE_USER']);
+            ->setRoles(['ROLE_USER'])
+            ->addCommande($com1);
         $manager->persist($user1);
 
-        // Commandes
-
-        $com1 = new Commande();
-        $com1->setDateCommande(new \DateTimeImmutable('16-04-2023 14:06:12'))
-            ->setTotal('24')
-            ->setEtat('2');
-
-        $com2 = new Commande();
-        $com2->setDateCommande(new \DateTimeImmutable('16-04-2023 14:06:12'))
-            ->setTotal('15')
-            ->setEtat('1');
-
-        $com3 = new Commande();
-        $com3->setDateCommande(new \DateTimeImmutable('16-04-2023 14:06:12'))
-            ->setTotal('19')
-            ->setEtat('0');
+        $user2 = new Utilisateur();
+        $user2->setEmail('durand@gmail.com')
+            ->setNom('Gatand')
+            ->setPrenom('Julien')
+            ->setTelephone('0678565415')
+            ->setPassword(password_hash('bonjour', PASSWORD_DEFAULT))
+            ->setRoles(['ROLE_USER'])
+            ->addCommande($com2)
+            ->addCommande($com3);
+        $manager->persist($user2);
 
         $manager->flush();
     }
