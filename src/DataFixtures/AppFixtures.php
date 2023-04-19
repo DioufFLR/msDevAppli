@@ -58,7 +58,7 @@ class AppFixtures extends Fixture
         $plat3->setLibelle('Pizza margherita');
         $plat3->setDescription('Pizza jambon fromage et champignon sur base sauce tomate');
         $plat3->setPrix(15);
-        $plat3->setImage('pizza_margherita.jpg');
+        $plat3->setImage('pizza-margherita.jpg');
         $plat3->setActive(1);
         $plat3->setCategorie($cat1);
         $manager->persist($plat3);
@@ -67,7 +67,7 @@ class AppFixtures extends Fixture
         $plat4->setLibelle('Pizza saumon');
         $plat4->setDescription('Pizza aux saumon');
         $plat4->setPrix(19);
-        $plat4->setImage('pizza_salmon.png');
+        $plat4->setImage('pizza-salmon.png');
         $plat4->setActive(1);
         $plat4->setCategorie($cat1);
         $manager->persist($plat4);
@@ -76,7 +76,7 @@ class AppFixtures extends Fixture
         $plat5->setLibelle('Spaghetti aux legumes');
         $plat5->setDescription('Pâtes fraiches aux légumes spécialement choisie par le chef');
         $plat5->setPrix(12.99);
-        $plat5->setImage('spaghetti_legumes.jpg');
+        $plat5->setImage('spaghetti-legumes.jpg');
         $plat5->setActive(1);
         $plat5->setCategorie($cat2);
         $manager->persist($plat5);
