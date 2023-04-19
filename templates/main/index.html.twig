@@ -10,16 +10,16 @@
                 <p>Des saveurs uniques de tous le continents</p>
             </div>
 
-            {% for category in categorie %}
-                <div class="col-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">{{ category.libelle }}</h3>
-                            <a href="" class="btn"><img src="{{ asset('assets/img/category/')  ~ category.image }}" alt="{{ category.libelle }}" width="200px"></a>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+{#            {% for category in categorie %}#}
+{#                <div class="col-4">#}
+{#                    <div class="card">#}
+{#                        <div class="card-body">#}
+{#                            <h3 class="card-title">{{ category.libelle }}</h3>#}
+{#                            <a href="" class="btn"><img src="{{ asset('assets/img/category/')  ~ category.image }}" alt="{{ category.libelle }}" width="200px"></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            {% endfor %}#}
 
         </section>
     </main>

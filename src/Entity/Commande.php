@@ -25,6 +25,7 @@ class Commande
     #[ORM\Column]
     private ?int $etat = null;
 
+    #[ORM\Column(type: 'string')]
     #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Detail::class)]
     private Collection $details;
 
