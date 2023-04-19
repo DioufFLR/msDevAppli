@@ -162,7 +162,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->commande;
     }
 
-    public function addCommande(commande $commande): self
+    public function addCommande(Commande $commande): self
     {
         if (!$this->commande->contains($commande)) {
             $this->commande->add($commande);
@@ -172,7 +172,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeCommande(commande $commande): self
+    public function removeCommande(Commande $commande): self
     {
         if ($this->commande->removeElement($commande)) {
             // set the owning side to null (unless already changed)

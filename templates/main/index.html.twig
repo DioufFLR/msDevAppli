@@ -10,12 +10,10 @@
                 <p>Des saveurs uniques de tous le continents</p>
             </div>
 
-            {% for liste in categorie %}
+            {% for categorie in liste %}
                 <div class="col-4">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="card-title">{{ category.libelle }}</h3>
-                            <a href="" class="btn"><img src="{{ asset('assets/img/category/')  ~ category.image }}" alt="{{ category.libelle }}" width="200px"></a>
                         </div>
                     </div>
                 </div>

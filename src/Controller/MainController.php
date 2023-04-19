@@ -3,8 +3,6 @@
 namespace App\Controller;
 
 use App\Repository\CategorieRepository;
-use App\Repository\CommandeRepository;
-use App\Repository\PlatRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
