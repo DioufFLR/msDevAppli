@@ -40,7 +40,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     private ?string $telephone = null;
 
-    #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: commande::class)]
+    #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Commande::class)]
     private Collection $commande;
 
     public function __construct()
