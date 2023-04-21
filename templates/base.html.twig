@@ -6,13 +6,15 @@
     <link rel="icon" href="{{ asset('assets/img/the_district_brand/favicon.png') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Feuilles de styles -->
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-    {% block stylesheets %}{% endblock %}
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    {% block stylesheets %}
+        <!-- Feuilles de styles -->
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 
-    <!-- IconScout -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+        <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+
+        <!-- IconScout -->
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    {% endblock %}
 
     <!-- Fichiers JS -->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
@@ -23,6 +25,7 @@
 <body>
 
 {% include "_partials/_nav.html.twig" %}
+
 {#{% if app.user and app.user.isVerified == false %}#}
 {#    <div class="alert alert-warning alert-dismissible" role="alert">#}
 {#        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>#}

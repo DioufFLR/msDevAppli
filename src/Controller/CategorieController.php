@@ -21,6 +21,7 @@ class CategorieController extends AbstractController
         ]);
     }
 
+    //On affiche les plats de chaques catégories
     #[Route('/categorie/{id}', name: 'app_categorie_detail')]
     public function detail(Categorie $categorie): Response
     {
