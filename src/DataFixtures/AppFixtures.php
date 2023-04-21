@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Categorie;
 use App\Entity\Commande;
+use App\Entity\Detail;
 use App\Entity\Plat;
 use App\Entity\Utilisateur;
 use ContainerXkERt5Y\getSecurity_UserPasswordHasherService;
@@ -132,6 +133,26 @@ class AppFixtures extends Fixture
             ->addCommande($com2)
             ->addCommande($com3);
         $manager->persist($user2);
+
+        // Détails
+
+        $det1 = new Detail();
+        $det1->setCommande($com1)
+            ->setPlat($plat3)
+            ->setQuantite(3);
+        $manager->persist($det1);
+
+        $det2 = new Detail();
+        $det2->setCommande($com2)
+            ->setPlat($plat2)
+            ->setQuantite(1);
+        $manager->persist($det2);
+
+        $det3 = new Detail();
+        $det3->setCommande($com3)
+            ->setPlat($plat5)
+            ->setQuantite(5);
+        $manager->persist($det3);
 
         $manager->flush();
     }
