@@ -14,7 +14,7 @@
 
                         <div class="card-body">
                             <h3 class="card-title">{{ categorie.libelle }}</h3>
-                            <a href="#" class="btn"><img src="{{ asset('assets/img/categorie/')  ~ categorie.image }}" alt="{{ categorie.libelle }}" width="200px"></a>
+                            <a href="{{ path('app_categorie_detail', { id:  categorie.id}) }}" class="btn"><img src="{{ asset('assets/img/categorie/')  ~ categorie.image }}" alt="{{ categorie.libelle }}" width="200px"></a>
                         </div>
                     </div>
                 </div>

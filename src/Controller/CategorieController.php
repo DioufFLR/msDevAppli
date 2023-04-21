@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Categorie;
+use App\Entity\Plat;
 use App\Repository\CategorieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +18,14 @@ class CategorieController extends AbstractController
 
         return $this->render('categorie/index.html.twig', [
             'liste' => $liste
+        ]);
+    }
+
+    #[Route('/categorie/{id}', name: 'app_categorie_detail')]
+    public function detail(Categorie $categorie): Response
+    {
+        return $this->render('categorie/cat_plat.html.twig', [
+            'categorie' => $categorie
         ]);
     }
 }
