@@ -8,6 +8,10 @@
         <div class="row">
             <h3>Tout nos plats</h3>
 
+            <div class="count my-3">
+                Avec nos {{ liste.getTotalItemCount }} plats nous vous offrons une possibilité de vous envolez vers une multitude saveurs!
+            </div>
+
             {% for plat in liste %}
                 <div class="col-4">
                     <div class="card">
@@ -19,6 +23,9 @@
                     </div>
                 </div>
             {% endfor %}
+            <div class="navigation d-flex justify-content-center mt-4">
+                {{ knp_pagination_render(liste) }}
+            </div>
         </div>
 
     </div>
