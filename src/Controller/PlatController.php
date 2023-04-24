@@ -14,6 +14,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PlatController extends AbstractController
 {
+    /**
+     * @param PlatRepository $platRepository
+     * @param PaginatorInterface $paginator
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/plat', name: 'app_plat_index')]
     public function index(PlatRepository $platRepository, PaginatorInterface $paginator, Request $request): Response
     {
