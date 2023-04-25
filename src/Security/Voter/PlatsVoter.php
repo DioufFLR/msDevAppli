@@ -10,8 +10,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class PlatsVoter extends Voter
 {
-    const EDIT = 'PRODUCT_EDIT';
-    const DELETE = 'PRODUCT_DELETE';
+    const EDIT = 'PLAT_EDIT';
+    const DELETE = 'PLAT_DELETE';
 
     private $security;
 
@@ -59,10 +59,10 @@ class PlatsVoter extends Voter
 
     private function canEdit()
     {
-        return $this->security->isGranted('ROLE_PRODUCT_ADMIN');
+        return $this->security->isGranted('ROLE_PLAT_ADMIN');
     }
     private function canDelete()
     {
-        return $this->security->isGranted('ROLE_PRODUCT_ADMIN');
+        return $this->security->isGranted('ROLE_PLAT_ADMIN');
     }
 }
