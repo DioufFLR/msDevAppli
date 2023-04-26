@@ -36,7 +36,7 @@ security:
         - { path: ^/profil, roles: ROLE_USER }
 
     role_hierarchy:
-        ROLE_PRODUCT_ADMIN: ROLE_USER
+        ROLE_PLAT_ADMIN: ROLE_USER
         ROLE_ADMIN: ROLE_PLAT_ADMIN
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 

@@ -40,6 +40,9 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     private ?string $telephone = null;
 
+    #[ORM\Column(type: 'boolean')]
+    private $is_verified = false;
+
     #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Commande::class)]
     private Collection $commande;
 
@@ -150,6 +153,18 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getIs_verified(): bool
+    {
+        return $this->is_verified;
+    }
+
+    public function setIs_verified(bool $is_verified): self
+    {
+        $this->is_verified = $is_verified;
 
         return $this;
     }
