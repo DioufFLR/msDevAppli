@@ -38,11 +38,15 @@
                         </label>
                     </div>
                     #}
+                    <div class="row col-3">
+                        <button class="btn btn-lg btn-primary mt-3" type="submit">Me connecter</button>
+                    </div>
 
-                    <button class="btn btn-lg btn-primary mt-3" type="submit">
-                        Me connecter
-                    </button>
-                    <a href="{{ path('app_register') }}" class="btn btn-secondary">M'inscrire</a>
+                    <div class="row col-12 mt-3 d-flex justify-content-between">
+                        <a href="{{ path('forgotten_password') }}" class="btn btn-secondary col-3">Mot de passe oublié</a>
+                        <a href="{{ path('app_register') }}" class="btn btn-secondary col-3 ">M'inscrire</a>
+                    </div>
+
                 </form>
             </div>
         </div>
