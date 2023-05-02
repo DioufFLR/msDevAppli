@@ -33,7 +33,8 @@
                             <td>{{ plat.image }}</td>
                             <td>{{ plat.active }}</td>
                             <td>
-                                <a href="{{ path('admin_plats_edit', {id: plat.id}) }}" class="btn btn-dark">Modifier</a>
+                                <a href="{{ path('admin_plats_edit', {id: plat.id}) }}" class="btn btn-dark mb-1">Modifier</a>
+                                <a href="" class="btn btn-danger">Supprimer</a>
                             </td>
                         </tr>
                     {% endfor %}
