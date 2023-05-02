@@ -1,7 +1,46 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Administration des utilisateurs{% endblock %}
+{% block title %}Liste des utilisateurs{% endblock %}
 
 {% block body %}
-    <h1>Administration des utilisateurs</h1>
+
+    <div class="container">
+        <div class="row">
+            {% include "_partials/_adminnav.html.twig" %}
+            <main class="col-9 border border-light bg-white p-2">
+                <h1>Liste des plats</h1>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Téléphone</th>
+                        <th>Vérifié</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>plat
+                    <tbody>
+                    {% for user in user %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.nom }}</td>
+                            <td>{{ user.prenom }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.roles }}</td>
+                            <td>{{ user.telephone }}</td>
+                            <td></td>
+                            <td>
+                                <a href="{{ path('admin_plats_edit', {id: plat.id}) }}" class="btn btn-dark">Modifier</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+
 {% endblock %}

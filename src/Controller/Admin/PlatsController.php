@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Plat;
 use App\Form\PlatsFormType;
+use App\Repository\PlatRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,9 +15,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class PlatsController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(PlatRepository $platRepository): Response
     {
-        return $this->render('admin/plats/index.html.twig');
+        $plat = $platRepository->findAll();
+
+        return $this->render('admin/plats/index.html.twig', compact('plat'));
     }
 
     // Ajouter un plat
