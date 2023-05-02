@@ -7,8 +7,10 @@ use App\Entity\Plat;
 use App\Repository\CategorieRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Positive;
 
 class PlatsFormType extends AbstractType
 {
@@ -21,8 +23,13 @@ class PlatsFormType extends AbstractType
             ->add('description', options: [
                 'label' => 'Description'
             ])
-            ->add('prix', options: [
-                'label' => 'Prix'
+            ->add('prix', MoneyType::class, options: [
+                'label' => 'Prix',
+                'constraints' => [
+                    new Positive(
+                        message: 'Le prix ne peut être négatif'
+                    )
+                ]
             ])
             ->add('image', options: [
                 'label' => 'Image'
