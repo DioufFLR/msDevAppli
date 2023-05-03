@@ -21,7 +21,7 @@ class Detail
     private ?Commande $commande = null;
 
     #[ORM\ManyToOne(inversedBy: 'details')]
-    #[ORM\JoinColumn(nullable: true)]
+    #[ORM\JoinColumn(referencedColumnName:"id", onDelete:"CASCADE")]
     private ?Plat $plat = null;
 
     public function getId(): ?int
@@ -64,4 +64,15 @@ class Detail
 
         return $this;
     }
+
+//    public function removeDetail(Plat $plat): self
+//    {
+//        if ($this->plats->removeElement($plat)) {
+//            // set the owning side to null (unless already changed)
+//            if ($plat->getDetail() === $this) {
+//                $plat->setDetail(null);
+//            }
+//        }
+//        return $this;
+//    }
 }

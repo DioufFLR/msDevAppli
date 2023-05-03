@@ -81,15 +81,19 @@ class PlatsController extends AbstractController
 
         return $this->renderForm('admin/plats/edit.html.twig', compact('platForm'));
 
-        return $this->render('admin/plats/index.html.twig');
+//        return $this->render('admin/plats/index.html.twig');
     }
 
     // Supprimer un plat
     #[Route('/suppression/{id}', name: 'delete')]
-    public function delete(Plat $plat): Response
+    public function delete(Plat $plat, EntityManagerInterface $entityManager): Response
     {
         // On vérifie si l'utilisateur peut supprimer avec le Voter
         $this->denyAccessUnlessGranted('PLAT_DELETE', $plat);
-        return $this->render('admin/plats/index.html.twig');
+
+        $entityManager->remove($plat);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_plats_index');
     }
 }
