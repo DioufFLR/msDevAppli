@@ -110,8 +110,17 @@ class AppFixtures extends Fixture
             ->setPrenom('Geoffrey')
             ->setTelephone('0645785421')
             ->setPassword(password_hash('bonjour', PASSWORD_DEFAULT))
-            ->setRoles(['ROLE_ADMIN', 'ROLE_USER']);
+            ->setRoles(['ROLE_ADMIN', 'ROLE_PLAT_ADMIN', 'ROLE_USER']);
         $manager->persist($admin);
+
+        $adminPlat = new Utilisateur();
+        $adminPlat->setEmail('adminplat@admin.fr')
+            ->setNom('Diallo')
+            ->setPrenom('Seydina')
+            ->setTelephone('0645254578')
+            ->setPassword(password_hash('bonjour', PASSWORD_DEFAULT))
+            ->setRoles(['ROLE_PLAT_ADMIN', 'ROLE_USER']);
+        $manager->persist($adminPlat);
 
         $user1 = new Utilisateur();
         $user1->setEmail('romain@gmail.com')
