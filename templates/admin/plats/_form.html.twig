@@ -4,8 +4,18 @@
     {{ form_row(platForm.description) }}
     {{ form_row(platForm.categorie) }}
     {{ form_row(platForm.prix) }}
-    {{ form_row(platForm.image) }}
     {{ form_row(platForm.active) }}
+
+    {# On affiche l'images si on est en mode édition #}
+    {% if app.request.attributes.get('_route') == 'admin_plats_edit'%}
+        <h2>Image</h2>
+            <div>
+                <img src="{{ asset('assets/uploads/plat/mini/300x300-' ~ plat.image) }}" alt="{{ plat.libelle }}" class="my-3">
+            </div>
+    {% endif %}
+
+    {{ form_row(platForm.image) }}
+
     <button type="submit" class="btn btn-danger">{{ button_label|default('Ajouter') }}</button>
 
 {{ form_end(platForm) }}

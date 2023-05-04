@@ -32,9 +32,6 @@ class PlatsFormType extends AbstractType
                     )
                 ]
             ])
-//            ->add('image', options: [
-//                'label' => 'Image'
-//            ])
             ->add('active', options: [
                 'label' => 'Active'
             ])
@@ -51,7 +48,8 @@ class PlatsFormType extends AbstractType
             ])
             ->add('image', FileType::class, [
                 'label' => false,
-                'required' => false
+                'required' => false,
+                'data_class' => null
             ])
         ;
     }
