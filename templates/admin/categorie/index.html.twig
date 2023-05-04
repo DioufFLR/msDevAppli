@@ -23,7 +23,7 @@
                         <tr>
                             <td>{{ categorie.id }}</td>
                             <td>{{ categorie.libelle }}</td>
-                            <td>{{ categorie.image }}</td>
+                            <td><img src="{{ asset('assets/img/categorie/')  ~ categorie.image }}" alt="{{ categorie.libelle }}" width="150px" height="150px"></td>
                             <td>{{ categorie.active }}</td>
                         </tr>
                     {% endfor %}

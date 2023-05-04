@@ -37,50 +37,50 @@ class AppFixtures extends Fixture
 
         // Plats
 
-        $plat1 = new Plat();
-        $plat1->setLibelle('Cheeseburger');
-        $plat1->setDescription('Burger classic steack cheddar et cornichons');
-        $plat1->setPrix(5.99);
-        $plat1->setImage('cheeseburger.jpg');
-        $plat1->setActive(1);
-        $plat1->setCategorie($cat3);
-        $manager->persist($plat1);
-
-        $plat2 = new Plat();
-        $plat2->setLibelle('Hamburger');
-        $plat2->setDescription('Burger classic steack cheddar et cornichons et double fromage');
-        $plat2->setPrix(7);
-        $plat2->setImage('hamburger.jpg');
-        $plat2->setActive(1);
-        $plat2->setCategorie($cat3);
-        $manager->persist($plat2);
-
-        $plat3 = new Plat();
-        $plat3->setLibelle('Pizza margherita');
-        $plat3->setDescription('Pizza jambon fromage et champignon sur base sauce tomate');
-        $plat3->setPrix(15);
-        $plat3->setImage('pizza-margherita.jpg');
-        $plat3->setActive(1);
-        $plat3->setCategorie($cat1);
-        $manager->persist($plat3);
-
-        $plat4 = new Plat();
-        $plat4->setLibelle('Pizza saumon');
-        $plat4->setDescription('Pizza aux saumon');
-        $plat4->setPrix(19);
-        $plat4->setImage('pizza-salmon.png');
-        $plat4->setActive(1);
-        $plat4->setCategorie($cat1);
-        $manager->persist($plat4);
-
-        $plat5 = new Plat();
-        $plat5->setLibelle('Spaghetti aux legumes');
-        $plat5->setDescription('Pâtes fraiches aux légumes spécialement choisie par le chef');
-        $plat5->setPrix(12.99);
-        $plat5->setImage('spaghetti-legumes.jpg');
-        $plat5->setActive(1);
-        $plat5->setCategorie($cat2);
-        $manager->persist($plat5);
+//        $plat1 = new Plat();
+//        $plat1->setLibelle('Cheeseburger');
+//        $plat1->setDescription('Burger classic steack cheddar et cornichons');
+//        $plat1->setPrix(5.99);
+//        $plat1->setImage('cheeseburger.jpg');
+//        $plat1->setActive(1);
+//        $plat1->setCategorie($cat3);
+//        $manager->persist($plat1);
+//
+//        $plat2 = new Plat();
+//        $plat2->setLibelle('Hamburger');
+//        $plat2->setDescription('Burger classic steack cheddar et cornichons et double fromage');
+//        $plat2->setPrix(7);
+//        $plat2->setImage('hamburger.jpg');
+//        $plat2->setActive(1);
+//        $plat2->setCategorie($cat3);
+//        $manager->persist($plat2);
+//
+//        $plat3 = new Plat();
+//        $plat3->setLibelle('Pizza margherita');
+//        $plat3->setDescription('Pizza jambon fromage et champignon sur base sauce tomate');
+//        $plat3->setPrix(15);
+//        $plat3->setImage('pizza-margherita.jpg');
+//        $plat3->setActive(1);
+//        $plat3->setCategorie($cat1);
+//        $manager->persist($plat3);
+//
+//        $plat4 = new Plat();
+//        $plat4->setLibelle('Pizza saumon');
+//        $plat4->setDescription('Pizza aux saumon');
+//        $plat4->setPrix(19);
+//        $plat4->setImage('pizza-salmon.png');
+//        $plat4->setActive(1);
+//        $plat4->setCategorie($cat1);
+//        $manager->persist($plat4);
+//
+//        $plat5 = new Plat();
+//        $plat5->setLibelle('Spaghetti aux legumes');
+//        $plat5->setDescription('Pâtes fraiches aux légumes spécialement choisie par le chef');
+//        $plat5->setPrix(12.99);
+//        $plat5->setImage('spaghetti-legumes.jpg');
+//        $plat5->setActive(1);
+//        $plat5->setCategorie($cat2);
+//        $manager->persist($plat5);
 
         // Commandes
 
@@ -145,23 +145,23 @@ class AppFixtures extends Fixture
 
         // Détails
 
-        $det1 = new Detail();
-        $det1->setCommande($com1)
-            ->setPlat($plat3)
-            ->setQuantite(3);
-        $manager->persist($det1);
-
-        $det2 = new Detail();
-        $det2->setCommande($com2)
-            ->setPlat($plat2)
-            ->setQuantite(1);
-        $manager->persist($det2);
-
-        $det3 = new Detail();
-        $det3->setCommande($com3)
-            ->setPlat($plat5)
-            ->setQuantite(5);
-        $manager->persist($det3);
+//        $det1 = new Detail();
+//        $det1->setCommande($com1)
+//            ->setPlat($plat3)
+//            ->setQuantite(3);
+//        $manager->persist($det1);
+//
+//        $det2 = new Detail();
+//        $det2->setCommande($com2)
+//            ->setPlat($plat2)
+//            ->setQuantite(1);
+//        $manager->persist($det2);
+//
+//        $det3 = new Detail();
+//        $det3->setCommande($com3)
+//            ->setPlat($plat5)
+//            ->setQuantite(5);
+//        $manager->persist($det3);
 
         $manager->flush();
     }

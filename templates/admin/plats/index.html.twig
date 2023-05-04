@@ -30,7 +30,7 @@
                             <td>{{ plat.libelle }}</td>
                             <td>{{ plat.description }}</td>
                             <td>{{ plat.prix }}</td>
-                            <td>{{ plat.image }}</td>
+                            <td><img src="{{ asset('assets/uploads/plat/mini/300x300-' ~ plat.image) }}" alt="{{ plat.libelle }}"></td>
                             <td>{{ plat.active }}</td>
                             <td>
                                 <a href="{{ path('admin_plats_edit', {id: plat.id}) }}" class="btn btn-dark mb-1">Modifier</a>

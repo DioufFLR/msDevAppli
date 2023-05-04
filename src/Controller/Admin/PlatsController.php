@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Plat;
 use App\Form\PlatsFormType;
 use App\Repository\PlatRepository;
+use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +25,7 @@ class PlatsController extends AbstractController
 
     // Ajouter un plat
     #[Route('/ajout', name: 'add')]
-    public function add(Request $request, EntityManagerInterface $entityManager): Response
+    public function add(Request $request, EntityManagerInterface $entityManager, PictureService $pictureService): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
@@ -39,6 +40,16 @@ class PlatsController extends AbstractController
 
         // On vérifie si le formulaire est soumis et valide
         if ($platForm->isSubmitted() && $platForm->isValid()){
+            // On récupère les images
+            $image = $platForm->get('image')->getData();
+
+            // On définit le dossier de destination
+            $folder = 'plat';
+
+            // On appelle le service d'ajout
+            $fichier = $pictureService->add($image, $folder, 300,  300);
+
+            $plat->setImage($fichier);
 
             // On stock
             $entityManager->persist($plat);

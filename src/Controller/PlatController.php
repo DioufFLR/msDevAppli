@@ -36,12 +36,4 @@ class PlatController extends AbstractController
             'liste' => $liste
         ]);
     }
-
-//    #[Route('/detail/{categorie}', name: 'app_plat_detail')]
-//    public function detail(Categorie $categorie): Response
-//    {
-//        return $this->render('plat/index.html.twig', [
-//            "categorie" => $categorie
-//        ]);
-//    }
 }
