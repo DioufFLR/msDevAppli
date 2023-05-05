@@ -66,7 +66,7 @@ class PlatsController extends AbstractController
 
     // Modifier un plat
     #[Route('/edition/{id}', name: 'edit')]
-    public function edit(Plat $plat, Request $request, EntityManagerInterface $entityManager): Response
+    public function edit(Plat $plat, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService): Response
     {
         // On vérifie si l'utilisateur peut éditer avec le Voter
         $this->denyAccessUnlessGranted('PLAT_EDIT', $plat);
@@ -79,6 +79,17 @@ class PlatsController extends AbstractController
 
         // On vérifie si le formulaire est soumis et valide
         if ($platForm->isSubmitted() && $platForm->isValid()){
+
+            // On récupère les images
+            $image = $platForm->get('image')->getData();
+
+            // On définit le dossier de destination
+            $folder = 'plat';
+
+            // On appelle le service d'ajout
+            $fichier = $pictureService->add($image, $folder, 300,  300);
+
+            $plat->setImage($fichier);
 
             // On stock
             $entityManager->persist($plat);

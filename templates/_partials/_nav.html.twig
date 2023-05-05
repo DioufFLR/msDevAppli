@@ -23,12 +23,14 @@
                             <a class="nav-link text-danger" href="{{ path('admin_index') }}">Administration</a>
                         </li>
                     {% endif %}
-                    <li class="nav-items">
-                        <a class="nav-link text-danger" href="#">Mon panier</a>
-                    </li>
-                    <li class="nav-items">
-                        <a class="nav-link text-danger" href="#">Mon compte</a>
-                    </li>
+                    {% if app.session != is_granted('ROLE_PLAT_ADMIN') %}
+                        <li class="nav-items">
+                            <a class="nav-link text-danger" href="#">Mon panier</a>
+                        </li>
+                        <li class="nav-items">
+                            <a class="nav-link text-danger" href="#">Mon compte</a>
+                        </li>
+                    {% endif %}
                     <li class="nav-items">
                         <a class="nav-link text-danger" href="{{ path('app_logout') }}">Me déconnecter</a>
                     </li>
