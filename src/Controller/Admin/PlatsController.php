@@ -7,6 +7,8 @@ use App\Form\PlatsFormType;
 use App\Repository\PlatRepository;
 use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Util\Json;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -122,5 +124,27 @@ class PlatsController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('admin_plats_index');
+    }
+
+    // Supprimer une image associé au plat
+    #[Route('/suppression/image/{id}', name: 'delete_image', methods: ['DELETE'])]
+    public function deleteImage(Plat $plat, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService): JsonResponse
+    {
+        // On récupère le contenu de la requête
+        $data = json_decode($request->getContent(), true);
+
+        if ($this->isCsrfTokenValid('delete' . $plat->getImage(), $data['_token'])){
+            // Le token csrf est valide
+            // On récupère le nom de l'image
+            $nom = $plat->getImage();
+
+            if ($pictureService->delete($nom, 'plat', 300, 300)){
+
+            }
+            // La suppresion a echoué
+            return new JsonResponse(['error' => 'Erreur de suppression'], 400);
+        }
+
+        return new JsonResponse(['error' => 'Token invalide'], 400);
     }
 }

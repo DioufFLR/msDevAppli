@@ -11,7 +11,7 @@
         <h2>Image</h2>
             <div>
                 <img src="{{ asset('assets/uploads/plat/mini/300x300-' ~ plat.image) }}" alt="{{ plat.libelle }}" class="my-3">
-                <a href="" data-delete data-token="{{ csrf_token('delete' ~ plat.id) }}">Supprimer</a>
+                <a href="{{ path('admin_plats_delete_image', {id: plat.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ plat.id) }}">Supprimer</a>
             </div>
     {% endif %}
 
