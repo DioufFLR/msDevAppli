@@ -35,6 +35,24 @@ class AppFixtures extends Fixture
         $cat3->setImage('burger_cat.jpg');
         $manager->persist($cat3);
 
+        $cat4 = new Categorie();
+        $cat4->setLibelle('Sandwich');
+        $cat4->setActive(1);
+        $cat4->setImage('sandwich_cat.jpg');
+        $manager->persist($cat4);
+
+        $cat5 = new Categorie();
+        $cat5->setLibelle('Salade');
+        $cat5->setActive(1);
+        $cat5->setImage('salade_cat.jpg');
+        $manager->persist($cat5);
+
+        $cat6 = new Categorie();
+        $cat6->setLibelle('Wrap');
+        $cat6->setActive(1);
+        $cat6->setImage('wrap_cat.jpg');
+        $manager->persist($cat6);
+
         // Plats
 
 //        $plat1 = new Plat();

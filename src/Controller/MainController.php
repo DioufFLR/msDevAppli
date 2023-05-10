@@ -15,7 +15,9 @@ class MainController extends AbstractController
     public function index(CategorieRepository $categorieRepository, PlatRepository $platRepository): Response
     {
         $liste = $categorieRepository->findAll();
-        $listePlats = $platRepository->findAll();
+        $listePlats = $platRepository->findBy(
+            ['id' => ['1', '4', '3']],
+            ['libelle' => 'asc']);
 
         return $this->render('main/index.html.twig', [
             'liste' => $liste,
