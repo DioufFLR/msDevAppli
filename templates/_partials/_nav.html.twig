@@ -22,18 +22,23 @@
                         <li class="nav-items">
                             <a class="nav-link text-danger" href="{{ path('admin_index') }}">Administration</a>
                         </li>
+                        <li class="nav-items">
+                            <a class="nav-link text-danger" href="{{ path('app_logout') }}">Me déconnecter</a>
+                        </li>
                     {% endif %}
                     {% if app.session != is_granted('ROLE_PLAT_ADMIN') %}
-                        <li class="nav-items">
-                            <a class="nav-link text-danger" href="#">Mon panier</a>
-                        </li>
-                        <li class="nav-items">
-                            <a class="nav-link text-danger" href="#">Mon compte</a>
+                        <li class="nav-item dropdown mx-4">
+                            <a class="nav-link dropdown-toggle text-danger" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ app.user.prenom }}
+                            </a>
+                            <ul class="dropdown-menu bg-dark">
+                                <li><a class="dropdown-item text-danger" href="#">Mon compte</a></li>
+                                <li><a class="dropdown-item text-danger" href="#">Mon panier</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="{{ path('app_logout') }}">Me déconnecter</a></li>
+                            </ul>
                         </li>
                     {% endif %}
-                    <li class="nav-items">
-                        <a class="nav-link text-danger" href="{{ path('app_logout') }}">Me déconnecter</a>
-                    </li>
                 {% else %}
                     <li class="nav-items">
                         <a class="nav-link text-danger" href="{{ path('app_register') }}">M'inscrire</a>

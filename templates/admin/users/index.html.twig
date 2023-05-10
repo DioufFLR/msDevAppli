@@ -4,14 +4,14 @@
 
 {% block body %}
 
-    <div class="container">
+    <div class="container my-5">
         <div class="row">
             {% include "_partials/_adminnav.html.twig" %}
             <main class="col-9 border border-light bg-white p-2">
                 <h1>Liste des Utilisateurs</h1>
                 <table class="table">
                     <thead>
-                    <tr>
+                    <tr class="bg-danger-subtle">
                         <th>ID</th>
                         <th>Nom</th>
                         <th>Prénom</th>
@@ -21,7 +21,7 @@
                         <th>Vérifié</th>
                         <th>Action</th>
                     </tr>
-                    </thead>plat
+                    </thead>
                     <tbody>
                     {% for user in user %}
                         <tr>
