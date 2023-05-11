@@ -31,6 +31,16 @@ class CartService
         $this->getSession()->set('cart', $cart);
     }
 
+    public function removeToCart(int $id)
+    {
+        $cart = $this->requestStack->getSession()->get('cart', []);
+        // J'enlève l'id du plat de la session
+        unset($cart[$id]);
+
+        // Je recrée une session pour actualiser la session
+        return $this->getSession()->set('cart', $cart);
+    }
+
     public function removeCartAll()
     {
         return $this->getSession()->remove('cart');

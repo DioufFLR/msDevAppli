@@ -22,7 +22,7 @@
                             <h3 class="card-title">{{ plat.libelle }}</h3>
                             <a href="#" class="btn"><img src="{{ asset('assets/uploads/plat/mini/300x300-' ~ plat.image) }}" alt="{{ plat.libelle }}" width="200px"></a>
 
-                            <a href="{{ path('app_cart') }}">Ajouter au panier</a>
+                            <a href="{{ path('app_cart_add', {id: plat.id}) }}">Ajouter au panier</a>
 
                         </div>
 
