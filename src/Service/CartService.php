@@ -4,7 +4,6 @@ namespace App\Service;
 
 use App\Entity\Plat;
 use Doctrine\ORM\EntityManagerInterface;
-use phpDocumentor\Reflection\PseudoTypes\IntegerValue;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class CartService
@@ -43,7 +42,7 @@ class CartService
         $cartData = [];
         if ($cart)
         {
-            foreach ($cart as $id => $quatity)
+            foreach ($cart as $id => $quantity)
             {
                 $plat = $this->em->getRepository(Plat::class)->findOneBy(['id' => $id]);
                 if (!$plat){
@@ -52,7 +51,7 @@ class CartService
 
                 $cartData[] = [
                     'plat' => $plat,
-                    'quantiy' => $quatity
+                    'quantiy' => $quantity
                 ];
             }
         }
