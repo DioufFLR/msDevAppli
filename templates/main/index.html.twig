@@ -18,11 +18,11 @@
 
             {% for categorie in liste %}
                 <div class="col-4">
-                    <div class="card">
+                    <div  class="card">
 
-                        <div class="card-body">
+                        <div class="card-body ">
                             <h3 class="card-title">{{ categorie.libelle }}</h3>
-                            <a href="" class="btn"><img src="{{ asset('assets/img/categorie/')  ~ categorie.image }}" alt="{{ categorie.libelle }}" width="200px" height="200px"></a>
+                            <a href="#" class="btn"><img class="img-fluid" src="{{ asset('assets/img/categorie/')  ~ categorie.image }}" alt="{{ categorie.libelle }}"></a>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
 
                         <div class="card-body">
                             <h3 class="card-title">{{ plat.libelle }}</h3>
-                            <a href="" class="btn"><img src="{{ asset('assets/uploads/plat/mini/300x300-' ~ plat.image) }}" alt="{{ plat.libelle }}" width="200px"></a>
+                            <a href="#" class="btn"><img class="img-fluid" src="{{ asset('assets/uploads/plat/mini/300x300-' ~ plat.image) }}" alt="{{ plat.libelle }}"></a>
                         </div>
                     </div>
                 </div>
