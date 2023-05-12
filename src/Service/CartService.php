@@ -20,7 +20,7 @@ class CartService
 
     public function addToCart(int $id): void
     {
-        $cart = $this->requestStack->getSession()->get('cart', []);
+        $cart = $this->getSession()->get('cart', []);
 
         if (!empty($cart[$id])) {
             $cart[$id]++;
@@ -39,6 +39,18 @@ class CartService
 
         // Je recrée une session pour actualiser la session
         return $this->getSession()->set('cart', $cart);
+    }
+
+    public function decrease(int $id)
+    {
+        $cart = $this->getSession()->get('cart', []);
+
+        if($cart[$id] > 1){
+            $cart[$id]--;
+        } else {
+            unset($cart[$id]);
+        }
+        $this->getSession()->set('cart', $cart);
     }
 
     public function removeCartAll()
@@ -61,7 +73,7 @@ class CartService
 
                 $cartData[] = [
                     'plat' => $plat,
-                    'quantiy' => $quantity
+                    'quantity' => $quantity
                 ];
             }
         }
