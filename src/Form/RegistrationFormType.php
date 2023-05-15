@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Utilisateur;
+use SebastianBergmann\CodeCoverage\Report\Text;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -44,6 +45,24 @@ class RegistrationFormType extends AbstractType
                     'class' => 'form-control'
                 ],
                 'label' => 'Numéro de téléphone'
+            ])
+            ->add('adresse', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label' => 'Adresse'
+            ])
+            ->add('cp', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label' => 'Code postal'
+            ])
+            ->add('ville', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label' => 'Ville'
             ])
             ->add('RGPDConsent', CheckboxType::class, [
                 'mapped' => false,

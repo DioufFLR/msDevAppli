@@ -50,6 +50,15 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Commande::class)]
     private Collection $commande;
 
+    #[ORM\Column(length: 50)]
+    private ?string $adresse = null;
+
+    #[ORM\Column(length: 20)]
+    private ?string $cp = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $ville = null;
+
     public function __construct()
     {
         $this->commande = new ArrayCollection();
@@ -211,6 +220,42 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
                 $commande->setUtilisateur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getCp(): ?string
+    {
+        return $this->cp;
+    }
+
+    public function setCp(string $cp): self
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
 
         return $this;
     }

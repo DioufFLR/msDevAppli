@@ -127,6 +127,9 @@ class AppFixtures extends Fixture
             ->setNom('Fleur')
             ->setPrenom('Geoffrey')
             ->setTelephone('0645785421')
+            ->setAdresse('11 rue de la liberté')
+            ->setCp('30000')
+            ->setVille('Nîmes')
             ->setPassword(password_hash('bonjour', PASSWORD_DEFAULT))
             ->setRoles(['ROLE_ADMIN', 'ROLE_PLAT_ADMIN', 'ROLE_USER']);
         $manager->persist($admin);
@@ -136,6 +139,9 @@ class AppFixtures extends Fixture
             ->setNom('Diallo')
             ->setPrenom('Seydina')
             ->setTelephone('0645254578')
+            ->setAdresse('45 rue de la foire')
+            ->setCp('67000')
+            ->setVille('Strasbourg')
             ->setPassword(password_hash('bonjour', PASSWORD_DEFAULT))
             ->setRoles(['ROLE_PLAT_ADMIN', 'ROLE_USER']);
         $manager->persist($adminPlat);
@@ -145,6 +151,9 @@ class AppFixtures extends Fixture
             ->setNom('Durand')
             ->setPrenom('Romain')
             ->setTelephone('0678521545')
+            ->setAdresse('28 boulevard des gens biens')
+            ->setCp('33000')
+            ->setVille('Bordeaux')
             ->setPassword(password_hash('bonjour', PASSWORD_DEFAULT))
             ->setRoles(['ROLE_USER'])
             ->addCommande($com1);
@@ -155,6 +164,9 @@ class AppFixtures extends Fixture
             ->setNom('Gatand')
             ->setPrenom('Julien')
             ->setTelephone('0678565415')
+            ->setAdresse('78 avenue de la paix')
+            ->setCp('75008')
+            ->setVille('Paris')
             ->setPassword(password_hash('bonjour', PASSWORD_DEFAULT))
             ->setRoles(['ROLE_USER'])
             ->addCommande($com2)

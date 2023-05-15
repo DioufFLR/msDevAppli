@@ -21,6 +21,9 @@
                 <fieldset class="mb-3">
                     <legend>Mes coordonnées</legend>
                     {{ form_row(registrationForm.telephone) }}
+                    {{ form_row(registrationForm.adresse) }}
+                    {{ form_row(registrationForm.cp) }}
+                    {{ form_row(registrationForm.ville) }}
                 </fieldset>
 
                 {{ form_row(registrationForm.plainPassword, {
