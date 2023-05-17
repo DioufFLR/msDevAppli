@@ -59,9 +59,13 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     private ?string $ville = null;
 
+    #[ORM\OneToMany(mappedBy: 'Utilisateur', targetEntity: Adresse::class)]
+    private Collection $adresses;
+
     public function __construct()
     {
         $this->commande = new ArrayCollection();
+        $this->adresses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -256,6 +260,36 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setVille(string $ville): self
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Adresse>
+     */
+    public function getAdresses(): Collection
+    {
+        return $this->adresses;
+    }
+
+    public function addAdress(Adresse $adress): self
+    {
+        if (!$this->adresses->contains($adress)) {
+            $this->adresses->add($adress);
+            $adress->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdress(Adresse $adress): self
+    {
+        if ($this->adresses->removeElement($adress)) {
+            // set the owning side to null (unless already changed)
+            if ($adress->getUtilisateur() === $this) {
+                $adress->setUtilisateur(null);
+            }
+        }
 
         return $this;
     }
