@@ -44,6 +44,11 @@ class Adresse
     #[ORM\Column(length: 255)]
     private ?string $ville = null;
 
+    public function __toString(): string
+    {
+        return $this->ville;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
