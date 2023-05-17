@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Transporteur{% endblock %}
+
+{% block body %}
+    <main class="container">
+        <h1>Edit Transporteur</h1>
+
+        {{ include('transporteur/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <a href="{{ path('app_transporteur_index') }}">back to list</a>
+
+        {{ include('transporteur/_delete_form.html.twig') }}
+    </main>
+{% endblock %}
