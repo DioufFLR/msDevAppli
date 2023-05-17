@@ -3,18 +3,55 @@
 {% block title %}Hello CommandeController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="container">
+    <div class="d-none d-lg-block top-0 start-0 h-100" style="width: 52.5%;">
+        <div class="container position-relative zindex-2 pt-5 pb-lg-5 pb-md-4 pb-2">
+            <div class="row">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+                <div class="col-lg-7">
+                    <nav aria-label="breadcrumb">
+                        <ol class="mt-5 pt-lg-3 pb-md-1 pb-lg-3 breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ path('app_main') }}">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="{{ path('app_plat_index') }}">Plats</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Création de la commande</li>
+                        </ol>
+                    </nav>
+                </div>
+                {{ form_start(form) }}
+                <h1 class="h2 pb-2">Création de la commande</h1>
+                <h3 class="fs-base fw-normal text-body text-uppercase pb-1 pb-sm-1">1.
+                    <span class="ms-1">tebi détails</span>
+                </h3>
+                <p>Si vous n'avez pas d'adresse ajoutez en une dans votre espace compte <a href="#">ajouter une adresse</a></p>
+                <h3 class="fs-base fw-normal text-body text-uppercase pb-2 pb-sm-3">2.
+                    <span class="ms-1">Choisir votre livraision</span>
+                </h3>
+                {{ form_row(form.adresses) }}
+                <h3 class="fs-base fw-normal text-body text-uppercase mt-n4 mt-md-n3 pt-5 pb-2 pb-sm-3">3.
+                    <span class="ms-1">Mode de livraison</span>
+                </h3>
+            </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/fleur/Bureau/theDistrictSF6/src/Controller/CommandeController.php'|file_link(0) }}">src/Controller/CommandeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/fleur/Bureau/theDistrictSF6/templates/commande/index.html.twig'|file_link(0) }}">templates/commande/index.html.twig</a></code></li>
-    </ul>
+            <div class="col-lg-5 offset-lg-1 pt-1">
+                {#            <h2 class="pb-2 pt-md-2 my-4 mt-lg-5">Récapitulatif de la commande#}
+                {#                <span class="fs-base fw-normal text-muted">({{ recapCart|length }} plats)</span>#}
+                {#            </h2>#}
+
+                {#            <div class="d-flex align-items-center justify-content-between border-top fs-xl pt-4 mb-4">#}
+                {#                Total: <span class="fs-3 fw-semibold text-dark ms-2">{{ (total) }} euros</span>#}
+                {#            </div>#}
+                {#            <div class="mt-5 text-center">#}
+                {#                <button class="btn btn-primary" type="submit" style="border-radius: 6px; position: relative; top: 20px;">#}
+                {#                    Valider votre commmande#}
+                {#                </button>#}
+                {#            </div>#}
+            </div>
+        </div>
+        {{ form_end(form) }}
+
+    </div>
 </div>
+
+
+
 {% endblock %}
