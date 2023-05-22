@@ -46,7 +46,10 @@ class Adresse
 
     public function __toString(): string
     {
-        return $this->ville;
+        return $this->getTitre() . '[-br]' .
+            $this->getAdresse() . '[-br]' .
+            $this->getVille() . ' - ' .
+            $this->getPays();
     }
 
     public function getId(): ?int
