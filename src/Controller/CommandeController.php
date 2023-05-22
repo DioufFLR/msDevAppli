@@ -7,6 +7,7 @@ use App\Service\CartService;
 use ContainerAsc0PGU\getTemplateControllerService;
 use phpDocumentor\Reflection\Types\True_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -26,5 +27,20 @@ class CommandeController extends AbstractController
             'form' => $form->createView(),
             'recapCart' => $cartService->getTotal()
         ]);
+    }
+
+    #[Route('/commande/verify', name: 'order_prepare', methods: ['POST'])]
+    public function prepareOrder(Request $request): Response
+    {
+        $form = $this->createForm(CommandeType::class, [
+                'user' => $this->getUser()
+        ]);
+
+        $form->handleRequest($request);
+
+//        dd($form);
+
+
+        return $this->render('commande/recap.html.twig');
     }
 }

@@ -21,7 +21,7 @@
             <div class="row">
 
                 <div class="col-lg-6">
-                    {{ form_start(form) }}
+                    {{ form_start(form, {action: path('order_prepare')}) }}
                     <h1 class="h2 pb-2">Finalisation de la commande</h1>
                     <h3 class="fs-base fw-normal text-body text-uppercase pb-1 pb-sm-1">1.
                         <span class="ms-1">Ajoutez une adresse</span>
@@ -75,9 +75,7 @@
                         Total: <span class="fs-3 fw-semibold text-dark ms-2">{{ (total) }} euros</span>
                     </div>
                     <div class="mt-5 text-center">
-                        <button class="btn btn-outline-danger" type="submit" style="border-radius: 6px; position: relative; top: 20px;">
-                            Valider votre commmande
-                        </button>
+                        <button class="btn btn-outline-danger" type="submit" style="border-radius: 6px; position: relative; top: 20px;">Valider votre commmande</button>
                     </div>
 
                 </div>
