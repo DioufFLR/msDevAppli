@@ -23,6 +23,14 @@ class Transporteur
     #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
     private ?string $prix = null;
 
+    public function __toString(): string
+    {
+        return $this->titre . '[-br]' .
+            $this->description . '[-br]' .
+            $this->prix . ' euros';
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;

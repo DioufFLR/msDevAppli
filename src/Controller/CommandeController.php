@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Form\CommandeType;
+use App\Service\CartService;
+use ContainerAsc0PGU\getTemplateControllerService;
 use phpDocumentor\Reflection\Types\True_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CommandeController extends AbstractController
 {
     #[Route('/commande/nouvelle', name: 'app_commande')]
-    public function index(): Response
+    public function index(CartService $cartService): Response
     {
         if (!$this->getUser()){
             return $this->redirectToRoute('app_login');
@@ -21,7 +23,8 @@ class CommandeController extends AbstractController
             'user' => $this->getUser()
         ]);
         return $this->render('commande/index.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'recapCart' => $cartService->getTotal()
         ]);
     }
 }
