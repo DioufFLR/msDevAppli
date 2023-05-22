@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CommandeController!{% endblock %}
+{% block title %}Commande{% endblock %}
 
 {% block body %}
 <div class="container">
@@ -13,12 +13,17 @@
                         <ol class="mt-5 pt-lg-3 pb-md-1 pb-lg-3 breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ path('app_main') }}">Accueil</a></li>
                             <li class="breadcrumb-item"><a href="{{ path('app_plat_index') }}">Plats</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Création de la commande</li>
+                            <li class="breadcrumb-item active" aria-current="page">Finalisation de la commande</li>
                         </ol>
                     </nav>
                 </div>
+
+                <div class="col-5">
+
+                </div>
                 {{ form_start(form) }}
-                <h1 class="h2 pb-2">Création de la commande</h1>
+
+                <h1 class="h2 pb-2">Finalisation de la commande</h1>
                 <h3 class="fs-base fw-normal text-body text-uppercase pb-1 pb-sm-1">1.
                     <span class="ms-1">Ajoutez une adresse</span>
                 </h3>
@@ -26,60 +31,70 @@
                 <h3 class="fs-base fw-normal text-body text-uppercase pb-2 pb-sm-3">2.
                     <span class="ms-1">Adresse de livraison</span>
                 </h3>
+
                 {{ form_row(form.adresses) | replace({'[-br]' : '</br>'}) | raw }}
+
                 <h3 class="fs-base fw-normal text-body text-uppercase mt-n4 mt-md-n3 pt-5 pb-2 pb-sm-3">3.
                     <span class="ms-1">Mode de livraison</span>
                 </h3>
                 {{ form_row(form.transporteur) | replace({'[-br]' : '</br>'}) | raw }}
             </div>
+        </div>
+    </div>
+        <div class="col-lg-6 offset-lg-1 pt-1">
 
-            <div class="col-lg-5 offset-lg-1 pt-1">
-                <h2 class="pb-2 pt-md-2 my-4 mt-lg-5">Récapitulatif de la commande
-                    <span class="fs-base fw-normal text-muted">({{ recapCart|length }} plats)</span>
-                </h2>
-                {% set total = null %}
-                {% for plat in recapCart %}
-                    {% set total = total + (plat.plat.prix * plat.quantity) %}
-                    
-                    <div class="d-sm-flex align-items-center border-top py-4">
-                        <a href="#" class="d-inline-block flex-shrink-0 rounded-1 p-sm-2 p-xl-3 mb-sm 0">
-                            <img src="{{ asset('assets/uploads/plat/mini/300x300-' ~ plat.plat.image) }}" width="100" height="100" alt="{{ plat.plat.libelle }}">
-                        </a>
-                        <div class="w-100 pt-1 ps-sm-4">
-                            <div class="d-block">
-                                <div class="me-3" style="position: relative; top: 15px;">
-                                    <h3 class="h5 mb-2"><a href="#">{{ plat.plat.libelle }}</a></h3>
-                                    <p>{{ plat.plat.description }}</p>
-                                </div>
-                                <div>
-                                    <p class="mb-2">Quantité : x{{ plat.quantity }} Prix du produit: {{ plat.plat.prix }} euros</p>
-                                </div>
-                            </div>
-                            <div class="nav justify-content-end mt-n4">
-                                <a  class="nav-link fs-xl p-2" href="{{ path('app_cart_remove', {id: plat.plat.id}) }}" data-bs-toggle="tooltip" title="Remove">
-                                    <i class="uil uil-trash-alt text-danger display-6"></i>
-                                </a>
-                            </div>
+            <h2 class="pb-2 pt-md-2 my-4 mt-lg-5">Récapitulatif de la commande
+                <span class="fs-base fw-normal text-muted">({{ recapCart|length }} plats)</span>
+            </h2>
+
+            {% set total = null %}
+            {% for plat in recapCart %}
+            {% set total = total + (plat.plat.prix * plat.quantity) %}
+
+            <div class="d-sm-flex align-items-center border-top py-4">
+                <a href="#" class="d-inline-block flex-shrink-0 rounded-1 p-sm-2 p-xl-3 mb-sm 0">
+                    <img src="{{ asset('assets/uploads/plat/mini/300x300-' ~ plat.plat.image) }}" width="100"
+                         height="100" alt="{{ plat.plat.libelle }}">
+                </a>
+
+                <div class="w-100 pt-1 ps-sm-4">
+                    <div class="d-block">
+                        <div class="me-3" style="position: relative; top: 15px;">
+                            <h3 class="h5 mb-2"><a href="#">{{ plat.plat.libelle }}</a></h3>
+                            <p>{{ plat.plat.description }}</p>
+                        </div>
+                        <div>
+                            <p class="mb-2">Quantité : x{{ plat.quantity }} - Prix du produit: {{ plat.plat.prix }}
+                                euros</p>
                         </div>
                     </div>
+                    <div class="nav justify-content-end mt-n4">
+                        <a class="nav-link fs-xl p-2" href="{{ path('app_cart_remove', {id: plat.plat.id}) }}"
+                           data-bs-toggle="tooltip" title="Remove">
+                            <i class="uil uil-trash-alt text-danger fs-2"></i>
+                        </a>
+                    </div>
+                </div>
 
-                {% endfor %}
-                
-                
-{#                            <div class="d-flex align-items-center justify-content-between border-top fs-xl pt-4 mb-4">#}
-{#                                Total: <span class="fs-3 fw-semibold text-dark ms-2">{{ (total) }} euros</span>#}
-{#                            </div>#}
-{#                            <div class="mt-5 text-center">#}
-{#                                <button class="btn btn-primary" type="submit" style="border-radius: 6px; position: relative; top: 20px;">#}
-{#                                    Valider votre commmande#}
-{#                                </button>#}
-{#                            </div>#}
+            </div>
+
+            {% endfor %}
+
+            <div class="d-flex align-items-center justify-content-between border-top fs-xl pt-4 mb-4">
+                Total: <span class="fs-3 fw-semibold text-dark ms-2">{{ (total) }} euros</span>
+            </div>
+            <div class="mt-5 text-center">
+                <button class="btn btn-primary" type="submit"
+                        style="border-radius: 6px; position: relative; top: 20px;">
+                    Valider votre commmande
+                </button>
             </div>
         </div>
-        {{ form_end(form) }}
-
     </div>
+    {{ form_end(form) }}
+
 </div>
+
 
 
 
