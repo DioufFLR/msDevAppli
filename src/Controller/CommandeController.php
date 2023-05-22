@@ -38,7 +38,7 @@ class CommandeController extends AbstractController
 
         $form->handleRequest($request);
 
-//        dd($form);
+        dd($form->getData());
 
 
         return $this->render('commande/recap.html.twig');
