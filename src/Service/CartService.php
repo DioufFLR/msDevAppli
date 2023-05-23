@@ -45,7 +45,7 @@ class CartService
     {
         $cart = $this->getSession()->get('cart', []);
 
-        if($cart[$id] > 1){
+        if($cart[$id] > 1) {
             $cart[$id]--;
         } else {
             unset($cart[$id]);
@@ -62,12 +62,10 @@ class CartService
     {
         $cart = $this->getSession()->get('cart');
         $cartData = [];
-        if ($cart)
-        {
-            foreach ($cart as $id => $quantity)
-            {
+        if ($cart) {
+            foreach ($cart as $id => $quantity) {
                 $plat = $this->em->getRepository(Plat::class)->findOneBy(['id' => $id]);
-                if (!$plat){
+                if (!$plat) {
                     // Supprimer le produit puis continuer en sortant de la boucle
                 }
 

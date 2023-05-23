@@ -10,8 +10,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class PlatsVoter extends Voter
 {
-    const EDIT = 'PLAT_EDIT';
-    const DELETE = 'PLAT_DELETE';
+    public const EDIT = 'PLAT_EDIT';
+    public const DELETE = 'PLAT_DELETE';
 
     private $security;
 
@@ -22,12 +22,10 @@ class PlatsVoter extends Voter
 
     protected function supports(string $attribute, $plat): bool
     {
-        if (!in_array($attribute, [self::EDIT, self::DELETE]))
-        {
+        if (!in_array($attribute, [self::EDIT, self::DELETE])) {
             return false;
         }
-        if (!$plat instanceof Plat)
-        {
+        if (!$plat instanceof Plat) {
             return false;
         }
         return true;
@@ -38,14 +36,17 @@ class PlatsVoter extends Voter
         // On récupère l'utilisateur à partir du token
         $user = $token->getUser();
 
-        if (!$user instanceof UserInterface) return false;
+        if (!$user instanceof UserInterface) {
+            return false;
+        }
 
         // On vérifie si l'utilisateur est admin
-        if ($this->security->isGranted('ROLE_ADMIN')) return true;
+        if ($this->security->isGranted('ROLE_ADMIN')) {
+            return true;
+        }
 
         // On vérifie les permissions
-        switch ($attribute)
-        {
+        switch ($attribute) {
             case self::EDIT:
                 // On vérifie si l'utilisateur peut éditer
                 return $this->canEdit();

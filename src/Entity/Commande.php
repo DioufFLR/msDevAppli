@@ -33,6 +33,30 @@ class Commande
     #[ORM\JoinColumn(nullable: false)]
     private ?Utilisateur $utilisateur = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $TransporteurNom = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
+    private ?string $TransporteurPrix = null;
+
+    #[ORM\Column]
+    private ?bool $isPaid = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $methode = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $reference = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $stripeSessionId = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $paypalSessionId = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $livraison = null;
+
     public function __construct()
     {
         $this->details = new ArrayCollection();
@@ -117,6 +141,102 @@ class Commande
     public function setUtilisateur(?Utilisateur $utilisateur): self
     {
         $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    public function getTransporteurNom(): ?string
+    {
+        return $this->TransporteurNom;
+    }
+
+    public function setTransporteurNom(string $TransporteurNom): self
+    {
+        $this->TransporteurNom = $TransporteurNom;
+
+        return $this;
+    }
+
+    public function getTransporteurPrix(): ?string
+    {
+        return $this->TransporteurPrix;
+    }
+
+    public function setTransporteurPrix(string $TransporteurPrix): self
+    {
+        $this->TransporteurPrix = $TransporteurPrix;
+
+        return $this;
+    }
+
+    public function isIsPaid(): ?bool
+    {
+        return $this->isPaid;
+    }
+
+    public function setIsPaid(bool $isPaid): self
+    {
+        $this->isPaid = $isPaid;
+
+        return $this;
+    }
+
+    public function getMethode(): ?string
+    {
+        return $this->methode;
+    }
+
+    public function setMethode(string $methode): self
+    {
+        $this->methode = $methode;
+
+        return $this;
+    }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): self
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    public function getStripeSessionId(): ?string
+    {
+        return $this->stripeSessionId;
+    }
+
+    public function setStripeSessionId(?string $stripeSessionId): self
+    {
+        $this->stripeSessionId = $stripeSessionId;
+
+        return $this;
+    }
+
+    public function getPaypalSessionId(): ?string
+    {
+        return $this->paypalSessionId;
+    }
+
+    public function setPaypalSessionId(?string $paypalSessionId): self
+    {
+        $this->paypalSessionId = $paypalSessionId;
+
+        return $this;
+    }
+
+    public function getLivraison(): ?string
+    {
+        return $this->livraison;
+    }
+
+    public function setLivraison(string $livraison): self
+    {
+        $this->livraison = $livraison;
 
         return $this;
     }

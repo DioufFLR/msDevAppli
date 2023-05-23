@@ -78,8 +78,7 @@ class RegistrationController extends AbstractController
     public function verifyUser($token, JWTService $jwt, UtilisateurRepository $utilisateurRepository, EntityManagerInterface $em): Response
     {
         // On vérifie si le token est valide et s'il n'a pas été modifié
-        if ($jwt->isValid($token) && !$jwt->isExpired($token) && $jwt->check($token, $this->getParameter('app.jwtsecret')))
-        {
+        if ($jwt->isValid($token) && !$jwt->isExpired($token) && $jwt->check($token, $this->getParameter('app.jwtsecret'))) {
             // On récupère le payload
             $payload = $jwt->getPayload($token);
 
@@ -87,7 +86,7 @@ class RegistrationController extends AbstractController
             $user = $utilisateurRepository->find($payload['user_id']);
 
             // On vérifie que l'utilisateur existe et n'a pas encore activé son compte
-            if ($user && !$user->getIs_verified()){
+            if ($user && !$user->getIs_verified()) {
                 $user->setIs_verified(true);
                 $em->flush($user);
                 $this->addFlash('success', 'Utilisateur activé');
@@ -105,12 +104,12 @@ class RegistrationController extends AbstractController
     {
         $user = $this->getUser();
 
-        if(!$user){
+        if(!$user) {
             $this->addFlash('danger', 'Vous devez être connecté pour accéder à cette page');
             return $this->redirectToRoute('app_login');
         }
 
-        if($user->getIs_verified()){
+        if($user->getIs_verified()) {
             $this->addFlash('warning', 'Cet utilisateur est déjà activé');
             return $this->redirectToRoute('profil_index');
         }

@@ -41,7 +41,7 @@ class PlatsController extends AbstractController
         $platForm->handleRequest($request);
 
         // On vérifie si le formulaire est soumis et valide
-        if ($platForm->isSubmitted() && $platForm->isValid()){
+        if ($platForm->isSubmitted() && $platForm->isValid()) {
             // On récupère les images
             $image = $platForm->get('image')->getData();
 
@@ -49,7 +49,7 @@ class PlatsController extends AbstractController
             $folder = 'plat';
 
             // On appelle le service d'ajout
-            $fichier = $pictureService->add($image, $folder, 300,  300);
+            $fichier = $pictureService->add($image, $folder, 300, 300);
 
             $plat->setImage($fichier);
 
@@ -80,7 +80,7 @@ class PlatsController extends AbstractController
         $platForm->handleRequest($request);
 
         // On vérifie si le formulaire est soumis et valide
-        if ($platForm->isSubmitted() && $platForm->isValid()){
+        if ($platForm->isSubmitted() && $platForm->isValid()) {
 
             // On récupère les images
             $image = $platForm->get('image')->getData();
@@ -89,7 +89,7 @@ class PlatsController extends AbstractController
             $folder = 'plat';
 
             // On appelle le service d'ajout
-            $fichier = $pictureService->add($image, $folder, 300,  300);
+            $fichier = $pictureService->add($image, $folder, 300, 300);
 
             $plat->setImage($fichier);
 

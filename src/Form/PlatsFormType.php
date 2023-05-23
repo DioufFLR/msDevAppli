@@ -39,8 +39,7 @@ class PlatsFormType extends AbstractType
                 'class' => Categorie::class,
                 'choice_label' => 'libelle',
                 'label' => 'Catégorie',
-                'query_builder' => function(CategorieRepository $categorieRepository)
-                {
+                'query_builder' => function (CategorieRepository $categorieRepository) {
                     // Pour trier par ordre alphabétique
                     return $categorieRepository->createQueryBuilder('c')
                         ->OrderBy('c.libelle', 'ASC');

@@ -16,7 +16,7 @@ class JWTService
      */
     public function generate(array $header, array $payload, string $secret, int $validity = 10800): string
     {
-        if ($validity > 0){
+        if ($validity > 0) {
             $now = new \DateTimeImmutable();
             $exp = $now->getTimestamp() + $validity;
 

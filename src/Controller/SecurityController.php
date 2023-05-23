@@ -16,6 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
 use function Sodium\add;
 
 class SecurityController extends AbstractController
@@ -45,23 +46,23 @@ class SecurityController extends AbstractController
     }
 
     #[Route('/oubli-pass', name: 'forgotten_password')]
-    public function forgottenPassword(Request $request,
-    UtilisateurRepository $utilisateurRepository,
-    TokenGeneratorInterface $tokenGenerator,
-    EntityManagerInterface $entityManager,
-    SendMailService $mail
-    ): Response
-    {
+    public function forgottenPassword(
+        Request $request,
+        UtilisateurRepository $utilisateurRepository,
+        TokenGeneratorInterface $tokenGenerator,
+        EntityManagerInterface $entityManager,
+        SendMailService $mail
+    ): Response {
         $form = $this->createForm(ResetPasswordRequestFormType::class);
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             // On va chercher l'utilisateur par son email
             $user = $utilisateurRepository->findOneByEmail($form->get('email')->getData());
 
             // On vérifie si on a un utilisateur
-            if ($user){
+            if ($user) {
                 // On génère un token de réinitialisation
                 $token = $tokenGenerator->generateToken();
                 $user->setResetToken($token);
@@ -103,17 +104,16 @@ class SecurityController extends AbstractController
         UtilisateurRepository $utilisateurRepository,
         EntityManagerInterface $entityManager,
         UserPasswordHasherInterface $passwordHasher
-    ): Response
-    {
+    ): Response {
         // On vérifie si ce token est dans la base de données
         $user = $utilisateurRepository->findOneByResetToken($token);
 
-        if ($user){
+        if ($user) {
             $form = $this->createForm(ResetPasswordFormType::class);
 
             $form->handleRequest($request);
 
-            if ($form->isSubmitted() && $form->isValid()){
+            if ($form->isSubmitted() && $form->isValid()) {
                 // On efface le token
                 $user->setResetToken('');
                 $user->setPassword(

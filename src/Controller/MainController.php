@@ -11,7 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 class MainController extends AbstractController
 {
     #[Route('/', name: 'app_main')]
@@ -20,7 +19,8 @@ class MainController extends AbstractController
         $liste = $categorieRepository->findAll();
         $listePlats = $platRepository->findBy(
             ['id' => ['1', '4', '3']],
-            ['libelle' => 'asc']);
+            ['libelle' => 'asc']
+        );
 
         return $this->render('main/index.html.twig', [
             'liste' => $liste,
