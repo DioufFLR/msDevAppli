@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Commande;
+use App\Entity\Detail;
 use App\Form\CommandeType;
 use App\Service\CartService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -35,8 +36,12 @@ class CommandeController extends AbstractController
     }
 
     #[Route('/commande/verifier', name: 'order_prepare', methods: ['POST'])]
-    public function prepareOrder(Request $request): Response
+    public function prepareOrder(Request $request, CartService $cartService): Response
     {
+        if (!$this->getUser()){
+            return $this->redirectToRoute('app_login');
+        }
+
         $form = $this->createForm(CommandeType::class, null, [
                 'user' => $this->getUser()
         ]);
@@ -61,12 +66,25 @@ class CommandeController extends AbstractController
                     ->setReference($reference)
                     ->setDateCommande($datetime)
                     ->setLivraison($deliveryForOrder)
-                    ->setTransporteurNom($transporter->getTitre)
-                    ->setTransporteurPrix($transporter->getPrix)
+                    ->setTransporteurNom($transporter->getTitre())
+                    ->setTransporteurPrix($transporter->getPrix())
                     ->setIsPaid(0)
                     ->setMethode('stripe');
 
                 $this->em->persist($order);
+
+                foreach ($cartService->getTotal() as $plat)
+                {
+                    $detail = new Detail();
+                    $detail->setCommande($order)
+                        ->setQuantite($plat['quantity'])
+                        ->setPrix($plat['plat']->getPrix())
+                        ->setPlat($plat['plat']->getLibelle())
+                        ->setTotalRecapitulatif($plat['plat']->getPrix() * $plat['quantity']);
+                    $this->em->persist($detail);
+                }
+                $this->em->flush();
+
             }
 
 
