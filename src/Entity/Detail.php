@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\DetailRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DetailRepository::class)]
@@ -23,6 +24,12 @@ class Detail
     #[ORM\ManyToOne(inversedBy: 'details')]
     #[ORM\JoinColumn(referencedColumnName:"id", onDelete:"CASCADE")]
     private ?Plat $plat = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
+    private ?string $prix = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
+    private ?string $totalRecapitulatif = null;
 
     public function getId(): ?int
     {
@@ -75,4 +82,28 @@ class Detail
 //        }
 //        return $this;
 //    }
+
+public function getPrix(): ?string
+{
+    return $this->prix;
+}
+
+public function setPrix(string $prix): self
+{
+    $this->prix = $prix;
+
+    return $this;
+}
+
+public function getTotalRecapitulatif(): ?string
+{
+    return $this->totalRecapitulatif;
+}
+
+public function setTotalRecapitulatif(string $totalRecapitulatif): self
+{
+    $this->totalRecapitulatif = $totalRecapitulatif;
+
+    return $this;
+}
 }
