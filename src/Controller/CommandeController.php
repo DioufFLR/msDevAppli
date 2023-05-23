@@ -79,8 +79,8 @@ class CommandeController extends AbstractController
                     $detail->setCommande($order)
                         ->setQuantite($plat['quantity'])
                         ->setPrix($plat['plat']->getPrix())
-                        ->setPlat($plat['plat']->getLibelle())
                         ->setTotalRecapitulatif($plat['plat']->getPrix() * $plat['quantity']);
+                    dd($detail);
                     $this->em->persist($detail);
                 }
                 $this->em->flush();
