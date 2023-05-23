@@ -3,12 +3,12 @@
 {% block title %}Commande{% endblock %}
 
 {% block body %}
-<div class="container">
 
-    <div class="d-lg-block top-0 start-0 h-100" style="width: 52.5%;">
+
+{#    <div class="d-lg-block top-0 start-0 h-100" style="width: 52.5%;">#}
         <div class="container position-relative zindex-2 pt-5 pb-lg-5 pb-md-4 pb-2">
 
-            <div class="col-7">
+            <div class="col-8">
                 <nav aria-label="breadcrumb">
                     <ol class="mt-5 pt-lg-3 pb-md-1 pb-lg-3 breadcrumb">
                         <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="{{ path('app_main') }}">Accueil</a></li>
@@ -79,17 +79,11 @@
                     </div>
 
                 </div>
+            </div>
         </div>
-    </div>
-
-
 
     {{ form_end(form) }}
-    </div>
 
-</div>
-
-
-
+{#    </div>#}
 
 {% endblock %}

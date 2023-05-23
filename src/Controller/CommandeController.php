@@ -4,8 +4,6 @@ namespace App\Controller;
 
 use App\Form\CommandeType;
 use App\Service\CartService;
-use ContainerAsc0PGU\getTemplateControllerService;
-use phpDocumentor\Reflection\Types\True_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +30,7 @@ class CommandeController extends AbstractController
     #[Route('/commande/verify', name: 'order_prepare', methods: ['POST'])]
     public function prepareOrder(Request $request): Response
     {
-        $form = $this->createForm(CommandeType::class, [
+        $form = $this->createForm(CommandeType::class, null, [
                 'user' => $this->getUser()
         ]);
 
