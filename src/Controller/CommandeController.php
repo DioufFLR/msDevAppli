@@ -79,13 +79,19 @@ class CommandeController extends AbstractController
                     $detail->setCommande($order)
                         ->setQuantite($plat['quantity'])
                         ->setPrix($plat['plat']->getPrix())
-                        ->setPlat($plat['plat']->getId());
-                    dd($plat);
-//                        ->setTotalRecapitulatif($plat['plat']->getPrix() * $plat['quantity']);
-//
+                        ->setTotalRecapitulatif($plat['plat']->getPrix() * $plat['quantity']);
+
                     $this->em->persist($detail);
                 }
                 $this->em->flush();
+
+                return $this->render('commande/recap.html.twig', [
+                    'method' => $order->getMethode(),
+                    'recapCart' => $cartService->getTotal(),
+                    'transporteur' => $transporter,
+                    'delivery' => $deliveryForOrder,
+                    'reference' => $order->getReference()
+                ]);
 
             }
 

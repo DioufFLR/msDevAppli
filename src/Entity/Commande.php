@@ -20,6 +20,7 @@ class Commande
     private ?\DateTimeImmutable $date_commande = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?string $total = null;
 
     #[ORM\Column]
@@ -30,7 +31,7 @@ class Commande
     private Collection $details;
 
     #[ORM\ManyToOne(inversedBy: 'commande')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\Column(nullable: false)]
     private ?Utilisateur $utilisateur = null;
 
     #[ORM\Column(length: 255)]
