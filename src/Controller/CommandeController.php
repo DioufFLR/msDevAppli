@@ -61,11 +61,12 @@ class CommandeController extends AbstractController
                 $deliveryForOrder .= '</br>' . $delivery->getCd() . ' - ' . $delivery->getVille();
                 $deliveryForOrder .= '</br>' . $delivery->getPays();
                 $order = new Commande();
-                $reference = $datetime->format('dmY') . '-' . uniqid();
+                $reference = $datetime->format('dmY') . '-' . uniqid('', true);
                 $order->setUtilisateur($this->getUser())
                     ->setReference($reference)
                     ->setDateCommande($datetime)
                     ->setLivraison($deliveryForOrder)
+                    ->setEtat('1')
                     ->setTransporteurNom($transporter->getTitre())
                     ->setTransporteurPrix($transporter->getPrix())
                     ->setIsPaid(0)
@@ -80,9 +81,10 @@ class CommandeController extends AbstractController
                         ->setQuantite($plat['quantity'])
                         ->setPrix($plat['plat']->getPrix())
                         ->setTotalRecapitulatif($plat['plat']->getPrix() * $plat['quantity']);
-
+                    $order->setTotal($detail->getTotalRecapitulatif());
                     $this->em->persist($detail);
                 }
+                $this->em->persist($order);
                 $this->em->flush();
 
                 return $this->render('commande/recap.html.twig', [
