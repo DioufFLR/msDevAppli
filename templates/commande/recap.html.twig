@@ -1,11 +1,31 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Vérifier la commande{% endblock %}
+
 {% block body %}
-bonjour
+
+    <div class="container position-relative zindex-2 pt-5 pb-lg-5 pb-md-4 pb-2">
+        <div class="row">
+            <div class="col-lg-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="mt-5 pt-lg-3 pb-md-1 pb-lg-3 breadcrumb">
+                        <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="{{ path('app_main') }}">Accueil</a></li>
+                        <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="{{ path('app_plat_index') }}">Plats</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Commande</li>
+                    </ol>
+                </nav>
+                <h1 class="h2 pb-2">Vérifier la commande</h1>
+                <h3 class="fs-base fw-normal text-body text-uppercase pb-1 pb-sm-1">1.
+                    <span class="ms-1">Les détails de l'expédition</span>
+                </h3>
+                <div class="form-check mb-4">
+                    <input type="radio" name="shipping" class="form-check-input" checked>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
 
-{% block title %}
 
-{% endblock %}
 

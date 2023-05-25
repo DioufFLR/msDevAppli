@@ -80,6 +80,7 @@ class CommandeController extends AbstractController
                     $detail->setCommande($order)
                         ->setQuantite($plat['quantity'])
                         ->setPrix($plat['plat']->getPrix())
+                        ->setPlatLibelle($plat['plat']->getLibelle())
                         ->setTotalRecapitulatif($plat['plat']->getPrix() * $plat['quantity']);
                     $order->setTotal($detail->getTotalRecapitulatif());
                     $this->em->persist($detail);
@@ -94,7 +95,6 @@ class CommandeController extends AbstractController
                     'delivery' => $deliveryForOrder,
                     'reference' => $order->getReference()
                 ]);
-
             }
 
 

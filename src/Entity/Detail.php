@@ -31,6 +31,9 @@ class Detail
     #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
     private ?string $totalRecapitulatif = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $platLibelle = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +106,18 @@ public function getTotalRecapitulatif(): ?string
 public function setTotalRecapitulatif(string $totalRecapitulatif): self
 {
     $this->totalRecapitulatif = $totalRecapitulatif;
+
+    return $this;
+}
+
+public function getPlatLibelle(): ?string
+{
+    return $this->platLibelle;
+}
+
+public function setPlatLibelle(string $platLibelle): self
+{
+    $this->platLibelle = $platLibelle;
 
     return $this;
 }
