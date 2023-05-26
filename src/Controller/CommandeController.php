@@ -74,6 +74,7 @@ class CommandeController extends AbstractController
                     ->setIsPaid(0)
                     ->setMethode('stripe');
 
+
                 $this->em->persist($order);
 
                 foreach ($cartService->getTotal() as $plat)
@@ -84,10 +85,11 @@ class CommandeController extends AbstractController
                         ->setPrix($plat['plat']->getPrix())
                         ->setPlatLibelle($plat['plat']->getLibelle())
                         ->setTotalRecapitulatif($plat['plat']->getPrix() * $plat['quantity']);
-                    $order->setTotal($detailRepository->total());
-                    dd($detail);
+
                     $this->em->persist($detail);
                 }
+                $order->setTotal($detailRepository->total(id: $order->getId()));
+
                 $this->em->persist($order);
                 $this->em->flush();
 
