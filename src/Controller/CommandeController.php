@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Commande;
 use App\Entity\Detail;
 use App\Form\CommandeType;
+use App\Repository\CommandeRepository;
+use App\Repository\DetailRepository;
 use App\Service\CartService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,7 +38,7 @@ class CommandeController extends AbstractController
     }
 
     #[Route('/commande/verifier', name: 'order_prepare', methods: ['POST'])]
-    public function prepareOrder(Request $request, CartService $cartService): Response
+    public function prepareOrder(Request $request, CartService $cartService, DetailRepository $detailRepository): Response
     {
         if (!$this->getUser()){
             return $this->redirectToRoute('app_login');
@@ -82,7 +84,8 @@ class CommandeController extends AbstractController
                         ->setPrix($plat['plat']->getPrix())
                         ->setPlatLibelle($plat['plat']->getLibelle())
                         ->setTotalRecapitulatif($plat['plat']->getPrix() * $plat['quantity']);
-                    $order->setTotal($detail->getTotalRecapitulatif());
+                    $order->setTotal($detailRepository->total());
+                    dd($detail);
                     $this->em->persist($detail);
                 }
                 $this->em->persist($order);

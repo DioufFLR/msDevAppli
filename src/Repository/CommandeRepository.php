@@ -3,8 +3,13 @@
 namespace App\Repository;
 
 use App\Entity\Commande;
+use App\Entity\Detail;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 /**
  * @extends ServiceEntityRepository<Commande>
@@ -37,6 +42,11 @@ class CommandeRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function total(): int
+    {
+
     }
 
 //    /**

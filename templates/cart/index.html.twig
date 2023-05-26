@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartController!{% endblock %}
+{% block title %}theDistrict - mon panier{% endblock %}
 
 {% block body %}
     <main class="page wrapper">
@@ -61,7 +61,7 @@
                 <div class="text-center pt-4 mt-lg-2">
                     <h1 class="display-5">Votre panier est vide</h1>
                     <p class="fs-lg pb-2 pb-mb-0 mb-4 mb-md-5">Commandez un plat dès maintenant, vous ne le regretterez pas!</p>
-                    <a href="{{ path('app_plat_index') }}" class="btn btn-lg btn-primary">Voir les produits</a>
+                    <a href="{{ path('app_plat_index') }}" class="btn btn-lg btn-outline-danger">Voir les produits</a>
                 </div>
             </div>
 

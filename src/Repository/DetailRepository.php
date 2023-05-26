@@ -39,6 +39,16 @@ class DetailRepository extends ServiceEntityRepository
         }
     }
 
+    public function total()
+    {
+        $query = $this->getEntityManager()->createQuery(
+            "SELECT SUM(d.total_recapitulatif)
+            FROM App\Entity\Detail d
+        WHERE d.commande_id = d.commande_id"
+        );
+        return $query->getResult();
+    }
+
 //    /**
 //     * @return Detail[] Returns an array of Detail objects
 //     */
