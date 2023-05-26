@@ -88,7 +88,7 @@ class CommandeController extends AbstractController
 
                     $this->em->persist($detail);
                 }
-                $order->setTotal($detailRepository->total(id: $order->getId()));
+                $order->setTotal($detailRepository->total());
 
                 $this->em->persist($order);
                 $this->em->flush();
